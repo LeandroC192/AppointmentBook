@@ -1,11 +1,18 @@
 public class AppointmentBook {
-    
+    private boolean[][]schedule;
+
+    public AppointmentBook(boolean[][] schedule)
+    {
+        this.schedule = schedule;
+    }
     /**
      * Returns true if minute in period is available for an appointment and returns
      * false otherwise
      * Preconditions: 1 <= period <= 8; 0 <= minute <= 59
      */
-    private boolean isMinuteFree(int period, int minute) {
+    private boolean isMinuteFree(int period, int minute) 
+    {
+        return schedule [period - 1][minute];
         /* implementation not shown */ }
 
     /**
@@ -25,7 +32,18 @@ public class AppointmentBook {
      * such block is found.
      * Preconditions: 1 <= period <= 8; 1 <= duration <= 60
      */
-    public int findFreeBlock(int period, int duration) {
+    public int findFreeBlock(int period, int duration) 
+    {
+        int block = 0;
+        for(int i = 0; i < 60; i++)
+        {
+            if(isMinuteFree(period, i))
+            {
+                block++;
+                if(block == duration);
+            }
+            return i - duration + 1;
+        }
         /* to be implemented in part (a) */ }
 
     /**
@@ -36,9 +54,15 @@ public class AppointmentBook {
      * returns false.
      * Preconditions: 1 <= startPeriod <= endPeriod <= 8; 1 <= duration <= 60
      */
-    public boolean makeAppointment(int startPeriod, int endPeriod, int duration){
+    public boolean makeAppointment(int startPeriod, int endPeriod, int duration)
+    {
+        return false; 
      /* to be implemented in part (b) */ }
 
     // There may be instance variables, constructors, and methods that are not shown.
-
+     public void printPeriod(int period)
+     {
+        for (int i = 0; i < schedule[period -1].length; i++)
+        System.out.println(i + " "+ schedule[period-1][i]);
+     }
 }
