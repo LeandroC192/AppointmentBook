@@ -35,16 +35,20 @@ public class AppointmentBook {
     public int findFreeBlock(int period, int duration) 
     {
         int block = 0;
-        for(int i = 0; i < 60; i++)
+        for(int i = 0; i < 60; i++) 
+        if(isMinuteFree(period, i))
         {
-            if(isMinuteFree(period, i))
+            block ++;
+            if (block == duration)
             {
-                block++;
-                if(block == duration);
+                return i -duration + 1;
+            }else block = 0;
+            {
+                return -1;
             }
-            return i - duration + 1;
-        }
-        /* to be implemented in part (a) */ }
+        } 
+        /* to be implemented in part (a) */ 
+    }
 
     /**
      * Searches periods from startPeriod to endPeriod, inclusive, for a block
